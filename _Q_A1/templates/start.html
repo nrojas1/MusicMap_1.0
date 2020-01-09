@@ -1,0 +1,25 @@
+<!--
+    <style media="screen">
+      a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+        }
+      .button{
+        background-color: #f1f1f1;
+        color: black;
+      }
+    </style> -->
+{% extends 'index.html' %}
+
+{% block body %}
+    <div class="row"></div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <a href="/srch" class='button'>Post Event?</a>
+        <a href="/liste" class="button">List Events?</a>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+{% endblock %}
