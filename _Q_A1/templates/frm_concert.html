@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Concert</h1>
+<form method= "post" id="new_concert" action="{{ url_for('db_update') }}">
+  What u need?
+  <select id="tal_sel" class="" name="">
+    <option selected >----select----</option>
+    <option name="tal_type" value="Musician">Musician</option>
+    <option name="tal_type" value="VJ">VJ</option>
+    <option name="tal_type" value="Sound Engineer">Sound engineer</option>
+    <option name="tal_type" value="Photo/film">Photo/film</option>
+  </select><br>
+  Venue: <input type="text" name="Name" value="Victoria Hall"><br>
+  Latitude: <input id="lat" name="latitude" value="46.666"><br>
+  Longitude: <input id="lng" name="longitude" value="6.2222"><br>
+  Date[DD/MM/YY]: <input id="date" type="date" name="date" min="2020-01-01"><br>
+  Start time: <input type="time" name="t_0" value=""><br>
+  End time: <input type="time" name="t_1" value=""><br>
+  Description: <input type="text" name="descript" value='descrip'><br>
+  <button onclick="update_new_concert()">submit</button>
+</form>
+<a href="/">HOME</a>
+{% endblock %}

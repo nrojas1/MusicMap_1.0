@@ -14,6 +14,22 @@ def index():
 def dashboard():
     return render_template('child.html')
 
+@app.route('/concert')
+def concert():
+    return render_template('frm_concert.html')
+
+@app.route('/rec')
+def rec():
+    return render_template('frm_rec.html')
+
+@app.route('/event')
+def event():
+    return render_template('frm_event.html')
+
+@app.route('/project')
+def project():
+    return render_template('frm_project.html')
+
 @app.route('/form', methods = ['POST', 'GET'])
 def db_update():
     results = request.form.to_dict(flat=False)
