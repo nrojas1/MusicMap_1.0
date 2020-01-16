@@ -74,6 +74,30 @@ function update_new_event(){
   // show_updated_event();
 }
 
+function post_concert() {
+  var post = $.post("/concert-db", function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  })
+}
+
+function post_rec() {
+  var post = $.post("/rec-db", function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  })
+}
+
+function post_event() {
+  var post = $.post("/event-db", function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  })
+}
+
+function post_project() {
+  var post = $.post("/project-db", function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  })
+}
+
 //show_cabanes();
 
 show_evenements();
@@ -107,26 +131,38 @@ function most_recent_event() {
 $("#tal_sel").change(function(){
   var tal = this.options[this.selectedIndex].value;
   if (tal == 'Musician'){
-    var html = '<select id="mus_type">';
-    html += '<option name="" value="Band">Band</>';
-    html += '<option name="" value="Pianist">Pianist</>';
-    html += '<option name="" value="">Violinist</>';
-    html += '<option name="" value="">Bassist</>';
-    html += '<option name="" value="">Saxophonist</>';
-    html += '<option name="" value="">Guitarist</>';
-    html += '<option name="" value="">Drummer</>';
-    html += '<option name="" value="">Singer</></select>';
-    $('#new_concert').append(html);
-    $('#mus_type').insertAfter('#tal_sel');
-    $("somethext").insertAfter('#tal_sel');
-  };
-  if (tal == 'Photo/film'){
-    var html = '<select id="photo_type">';
-    html += '<option name="" value="">Photographer</>';
-    html += '<option name="" value="">Filmer</>';
-    html += '<option name="" value="">Both</>';
-    $('#new_concert').append(html);
-    $('#photo_type').insertAfter('#tal_sel');
-  };
+    $('#child_type').remove();
+    var html = '<select id="child_type" name="child_type" form="form_holder">';
+    html += '<option selected hidden>which one?</>';
+    html += '<option name="person" value="Band">Band</>';
+    html += '<option name="person" value="Pianist">Pianist</>';
+    html += '<option name="person" value="Violinist">Violinist</>';
+    html += '<option name="person" value="Bassist">Bassist</>';
+    html += '<option name="person" value="Saxophonist">Saxophonist</>';
+    html += '<option name="person" value="Guitarist">Guitarist</>';
+    html += '<option name="person" value="Drummer">Drummer</>';
+    html += '<option name="person" value="Singer">Singer</></select>';
+    $('#form_holder').append(html);
+    $('#child_type').insertAfter('#tal_sel');
+    $('[name="description"]')
+      .attr("placeholder", "Tell us about the music style, stage time, equipment, specific skills required...");
+  } else if (tal == 'Photo/film'){
+    $('#child_type').remove();
+    var html = '<select id="child_type" name="child_type">';
+    html += '<option selected hidden>which one?</>';
+    html += '<option name="cam_person" value="Photographer">Photographer</>';
+    html += '<option name="cam_person" value="Filmer">Filmer</>';
+    html += '<option name="cam_person" value="Both">Both</>';
+    $('#form_holder').append(html);
+    $('#child_type').insertAfter('#tal_sel');
+    $('[name="description"]')
+      .attr("placeholder", "Tell us a little about what you need to capture");
+  } else if (tal == 'Sound Engineer' || tal == 'VJ') {
+    $('#child_type').remove();
+    $('[name="description"]')
+      .attr("placeholder", "What is the available equipment? Talk about the venue");
+  } else {
+    $('#child_type').remove();
+  }
 
 })

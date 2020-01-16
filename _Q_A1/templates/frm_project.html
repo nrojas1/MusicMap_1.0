@@ -2,26 +2,27 @@
 
 {% block content %}
 <h1>Project</h1>
-<form method= "post" id="new_project" action="{{ url_for('db_update') }}">
+<form method= "post" id="form_holder" action="{{ url_for('db_project') }}">
   What u need?
-  <select id="tal_sel" class="" name="">
-    <option value="Musician">Musician</option>
-    <option value="VJ">VJ</option>
-    <option value="Studio">Studio</option>
-    <option value="Photo/film">Photo/film</option>
+  <select id="tal_sel" name="talent_type" form="form_holder">
+    <option selected >----select----</option>
+    <option name="tal_type" value="Musician">Musician</option>
+    <option name="tal_type" value="VJ">VJ</option>
+    <option name="tal_type" value="Sound Engineer">Sound engineer</option>
+    <option name="tal_type" value="Photo/film">Photo/film</option>
   </select><br> MULTIPLE?!<br>
-  Project name: <input type="text" name="Name" value="Name"><br>
-  Region: <input type="text" name="" value="IDK IF THIS GON WORK">
+  Project name: <input type="text" name="name" value="Name"><br>
+  Region: <input type="text" name="region" value="IDK IF THIS GON WORK">
   Date[DD/MM/YY]: <input id="date" type="date" name="date" min="2020-01-01"><br>
-  Description: <input type="text" name="descript" value='descrip'><br>
   Pay?
-  <select class="" name="">
+  <select class="" name="pay_opt">
+    <option selected >--select--</option>
     <option value="yes">Yes</option>
     <option value="no">No</option>
     <option value="maybe">Maybe</option>
-  </select> <input id="moneynumber" type="number" name="" value="">
-
-  <button onclick="update_new_event()">submit</button>
+  </select><br>
+  Description: <textarea name="description" rows="3" cols="30" placeholder=""></textarea><br>
+  <button onclick="post_project()">submit</button>
 </form>
 <a href="/">HOME</a>
 {% endblock %}
